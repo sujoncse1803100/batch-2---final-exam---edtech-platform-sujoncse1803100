@@ -12,7 +12,7 @@ const StudentLogin = () => {
   useEffect(() => {
     document.title = "Student Login";
     alert(
-      "There may be show little bit problem to go admin route in hosting site..please go to admin route thourgh link of admin login"
+      "please don't go to any page through search bar.Go thorough Link in the page.There may be hosting problem"
     );
   }, []);
 
