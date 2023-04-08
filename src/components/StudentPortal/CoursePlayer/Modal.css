@@ -1,0 +1,96 @@
+body.active-modal {
+    overflow-y: hidden;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    display: block;
+    margin: 100px auto 0;
+    font-size: 18px;
+}
+
+.background{
+    background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
+.modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 80%;
+    min-width: 50%;
+    max-height: 50%;
+    min-height: 30%;
+    
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5%;
+}
+
+.input{
+    position: relative;
+    display: block;
+    width: 100%;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border-width: 1px;
+    border-color: rgb(51 65 85 / 0.6);
+    --tw-bg-opacity: 1;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    --tw-text-opacity: 1;
+    color: black;
+    
+}
+
+
+.assignment-submit-btn{
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    color: black;
+   
+    cursor: pointer;
+}
+
+.assignment-submit-btn:hover{
+    background-color: rgb(199, 171, 171);
+}
+
+.modal-from{
+    width: 100%;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+}

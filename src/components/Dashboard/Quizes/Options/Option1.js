@@ -1,0 +1,106 @@
+import React from "react";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addOption,
+  setCurrentStep,
+} from "../../../../features/steper/steperSlice";
+
+const Option = () => {
+  const [optionInfo, setOptonInfo] = useState({});
+  const [color, setColor] = useState("");
+  const { currentStep, quiz } = useSelector((state) => state.steper);
+  const dispatch = useDispatch();
+
+  const handleInfo = (e) => {
+    const updatedInfo = { ...optionInfo };
+    if (e.target.name === "option") {
+      updatedInfo[e.target.name] = e.target.value;
+    } else {
+      updatedInfo["isCorrect"] = e.target.value === "true" ? true : false;
+    }
+    setOptonInfo(updatedInfo);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    optionInfo["id"] = quiz.options.length + 1;
+    dispatch(addOption({ ...optionInfo }));
+    dispatch(setCurrentStep());
+  };
+  return (
+    <div className=" mx-auto max-w-lg px-5 lg:px-0 ">
+      <span>Option-{currentStep + 1}</span>
+      <form className="" onSubmit={handleSubmit}>
+        <input type="hidden" name="remember" value="true" />
+        <div className="rounded-md shadow-sm -space-y-px">
+          <div>
+            <input
+              id="option"
+              name="option"
+              type="text"
+              autoComplete="option"
+              required
+              className="login-input rounded-t-md"
+              placeholder="option"
+              onChange={handleInfo}
+            />
+          </div>
+
+          <div className="flex">
+            <input
+              type="radio"
+              id="true"
+              name="isCorrect"
+              required
+              onChange={(e) => {
+                handleInfo(e);
+                setColor("green");
+              }}
+              value="ture"
+            />
+             
+            <label
+              style={{
+                marginRight: "20px",
+                color: `${color === "green" ? "green" : "white"}`,
+              }}
+              htmlFor="true"
+            >
+              true
+            </label>
+            <input
+              type="radio"
+              id="false"
+              name="isCorrect"
+              onChange={(e) => {
+                handleInfo(e);
+                setColor("red");
+              }}
+              value="false"
+            />
+            <label
+              style={{
+                marginRight: "20px",
+                color: `${color === "red" ? "red" : "white"}`,
+              }}
+              htmlFor="false"
+            >
+              false
+            </label>
+          </div>
+        </div>
+
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            className="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
+          >
+            Add Option
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default Option;
